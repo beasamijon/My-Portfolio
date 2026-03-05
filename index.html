@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">MyPortfolio</div>
+            <ul class="nav-links">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#projects">PROJECTS</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="hero-text">
+            <!-- Circular Profile Image -->
+            <img src="beadp.jpg" alt="Profile Picture" class="hero-profile">
+
+            <!-- Name -->
+            <h1>Hi, I'm Bea Samijon</h1> 
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <!-- Repeat for 5 projects -->
+            <div class="project-card" data-images="robot1.png, robot2.png, emb2.jpg">
+                <h3>Embedded Project</h3>
+                <small>We’re bringing a Bluetooth-controlled 4WD robot car to life, 
+                    complete with an articulated mechanical arm. 
+                    Our project features a mobile base driven by four geared motors and an arm utilizing four specific servos for its Base, Shoulder, Elbow, and Wrist. By managing our Arduino Uno and motor shield via laptop, we’ve collaboratively assembled the chassis and are now fine-tuning the code to make it fully functional.</small>
+                 <br><button class="view-btn">View</button>
+            </div>
+
+            <div class="project-card" data-images="multimed.jpg">
+                <h3>Multimedia</h3>
+                <small>This is the poster i  designed for our multimedia project on Bleach. 
+                    It showcases Ichigo Kurosaki, the main protagonist, in his shinigami uniform with the iconic zanpakutō slung over his shoulder. The dual image gives him that intense, reflective vibe, and the bold red-and-silver text “ICHIGO KURUSAKI” makes the name pop. We’re using this as the central visual for our animation sequence, blending the 
+                    anime style with our own graphic effects to catch the audience’s attention.</small>
+                 <br><button class="view-btn">View</button>
+            </div>
+
+<div class="project-card" data-video="https://youtube.com/embed/74FKA8uHZXk">
+    <h3>Entrep Video Pitch</h3>
+    <small>
+        Calaster.Ai is a revolutionary disaster detection platform that harnesses the power of artificial intelligence to predict and alert users of impending natural disasters, such as typhoons, earthquakes, and floods. With its cutting-edge technology and real-time monitoring, 
+        Calaster.Ai provides critical information to help individuals and communities prepare and stay safe in the face of disaster. By leveraging AI-driven insights, Calaster.Ai is changing the way we respond to natural phenomena, empowering users to take proactive measures and mitigate the impact of these events.
+    </small>
+    <br>
+    <button class="view-btn">View</button>
+</div>
+
+            <div class="project-card" data-images="itera.jpg">
+                <h3>IT Era</h3>
+                <small>This is my adobe Photoshop designed for our IT era project Bea's Seafoods Kitchen. The layout uses a black and pink background with a diagonal split, giving it a modern, eye‑catching look. There are three food images: a black pot of mixed seafood dish on the left, a white bowl of seafood soup in the center, and a pink plate of grilled seafood on the right. 
+                    The top and bottom feature the Bea's Kitchen logo with a crab illustration. The pink text ‘YOUR FAVOURITE SEA FOODS HERE!’ curves around the center, while ‘BEA'S SEAFOODS KITCHEN’ is boldly placed below the left image. Contact information and a barcode are positioned on the right for product packaging.</small>
+                <br><button class="view-btn">View</button>
+            </div>
+
+            <div class="project-card" data-images="webdev1.jpg,webdev2.jpg,webdev3.jpg">
+                <h3>Introduction to Computing</h3>
+                <small>This project of mine is  a web development exercise focusing on HTML and CSS styling, specifically exploring color specification using RGB values. It showcases a comparison of coding snippets and their rendered outputs, 
+                    highlighting a table summarizing top websites with free and paid courses, and demonstrating various RGB color applications. The project seems educational, aiming to illustrate effective web design and coding practices.</small>
+                <br><button class="view-btn">View</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Unified Modal for Images & Videos -->
+    <div id="projectModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modal-img" style="display:none;">
+        <video class="modal-content" id="modal-video" controls style="display:none;"></video>
+        <div id="modal-caption"></div>
+        <button class="prev-btn">&lt;</button>
+        <button class="next-btn">&gt;</button>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <h2>About Me</h2>
+        <div class="about-card">
+             </div>
+    </section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section">
+    <h2>Contact Me</h2>
+    <div class="contact-grid">
+
+        <div class="contact-card">
+            <a href="https://www.facebook.com/bea.samijon.2025" target="_blank">
+                <img src="fblogo.png" alt="Facebook">
+                <h4>Facebook</h4>
+            </a>
+        </div>
+
+        <div class="contact-card">
+            <a href="https://www.instagram.com/estbtrz" target="_blank">
+                <img src="iglogo.png" alt="Instagram">
+                <h4>Instagram</h4>
+            </a>
+        </div>
+
+        <div class="contact-card">
+            <a href="https://mail.google.com/mail/?view=cm&to=beasamijon3@gmail.com&su=Portfolio%20Inquiry&body=" target="_blank"> 
+             <img src="gmaillogo.png" alt="Email">
+              <p>Gmail</p>
+        </a>
+        </div>
+
+        <div class="contact-card">
+            <img src="calllogo.jpg" alt="Call">
+            <h4>Call</h4>
+            <h5>0953-346-4986</h5>
+        </div>
+
+    </div>
+</section>
+
+    <script src="script.js"></script>
+</body>
+</html>

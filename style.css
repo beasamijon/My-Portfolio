@@ -1,0 +1,451 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    /* Replace gradient with background image */
+    background-image: url('bg.png'); /* your image path */
+    background-size: cover;       /* make it cover the entire viewport */
+    background-position: center;  /* center the image */
+    background-repeat: no-repeat; /* prevent tiling */
+    background-attachment: fixed; /* optional: keeps image fixed on scroll */
+    
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    background: rgba(255,192,203,0.95);
+    z-index: 1000;
+}
+
+.navbar .logo {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+/* Navbar Links */
+.navbar .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+/* Navbar Links Style */
+.navbar .nav-links li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar .nav-links li a:hover {
+    color: #fff;
+}
+
+/* Hamburger Menu (hidden on desktop) */
+.hamburger {
+    display: none;               /* hidden by default */
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    z-index: 1001;               /* ensure it’s above nav-links */
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background: #ff69b4;
+    transition: all 0.3s ease;
+}
+
+/* Hamburger animation when active */
+.hamburger.open div:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.open div:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open div:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Responsive: show hamburger on small screens */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .navbar .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;           /* hide offscreen */
+        height: 100vh;
+        width: 200px;
+        background: #ff69b4;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 3rem 1rem;
+        transition: right 0.3s ease;
+    }
+
+    .navbar .nav-links.active {
+        right: 0;               /* show menu */
+    }
+
+    .navbar .nav-links li a {
+        color: #fff;            /* white text in mobile menu */
+        font-size: 1.2rem;
+    }
+}
+
+/* Bounce animation for profile image */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px); /* how high it bounces */
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Apply bounce to hero profile image */
+.hero-profile {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+
+    animation: bounce 2s infinite; /* bounce animation applied */
+}
+/* Home Section Background */
+.hero {
+    background-image: url("herobggif.gif"); /* replace with your image file */
+    background-size: cover;        /* makes image cover whole section */
+    background-position: center;   /* centers the image */
+    background-repeat: no-repeat;  /* prevents repeating */
+    min-height: 100vh;             /* full screen height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    color: #333;
+    white-space: nowrap;   /* keep text on one line for typing */
+    overflow: hidden;      /* hide the rest */
+    border-right: 0.15em solid #333; /* blinking cursor */
+    width: 0;              /* start from 0 for typing effect */
+    animation: typing 3s steps(20, end) forwards, blink 0.7s step-end;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    color: #333;
+    white-space: nowrap;        /* keep text on one line */
+    overflow: hidden;           /* hide extra text */
+    width: 0;                   /* start from 0 for typing */
+    animation: typing 3s steps(20, end) forwards;
+    
+    /* Remove cursor */
+    border-right: none;         
+}
+
+/* Typing effect */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+/* Sections */
+section {
+    padding: 100px 2rem;
+}
+
+.projects-section h2,
+.contact-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    
+}
+#projects h2 {
+    font-size: 3rem;      
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;    
+    color: #ffffff;   /* new color (gold) */
+    margin-top: 0;     
+    margin-bottom: 20px;
+    text-align: center;    
+}
+
+#projects h3 {
+    font-size: 1rem;      
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;    
+    color: #ffffff;   /* new color (gold) */
+    margin-top: 0;     
+    margin-bottom: 20px;
+    text-align: center;    
+}
+
+/* Project Cards */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: #e98585e0;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.project-card button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    background: #bb236f;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.project-card button:hover {
+    background: #ff3399;
+}
+
+/* Modal overlay */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Media inside modal (image/video) */
+.modal-content {
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 10px;
+    transition: 0.3s;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Close button */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 4rem;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover {
+    color: #ff6666;
+}
+
+/* Next button */
+.next-btn,
+.prev-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 4rem;
+    color: #fff;
+    background: rgba(0,0,0,0.3);
+    border: none;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s, color 0.3s;
+}
+
+.next-btn:hover,
+.prev-btn:hover {
+    background: rgba(255,255,255,0.3);
+    color: #000;
+}
+
+/* Next button on right */
+.next-btn {
+    right: 50px;
+}
+
+/* Prev button on left */
+.prev-btn {
+    left: 50px;
+}
+
+/* Caption below media */
+#modal-caption {
+    margin-top: 15px;
+    color: #fff;
+    font-size: 1.2rem;
+    text-align: center;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .modal-content {
+        max-width: 95%;
+        max-height: 70%;
+    }
+
+    .next-btn,
+    .prev-btn {
+        font-size: 3rem;
+        width: 50px;
+        height: 50px;
+    }
+
+    .close {
+        font-size: 3rem;
+        right: 20px;
+    }
+
+    #modal-caption {
+        font-size: 1rem;
+    }
+}
+/* About Section */
+.about-section h2 {
+    text-align: center;
+    margin-bottom: 2rem; 
+}
+#about h2 {
+    font-size: 2rem;      
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;    
+    color: #ffffff;   /* new color (gold) */
+    margin-top: 0;     
+    margin-bottom: 20px;
+    text-align: center;    
+}
+.about-card {
+    background-image: url('cardbggif.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem;
+    height: 400px;
+
+    position: relative; /* Important */
+
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(217, 22, 22, 0.786);
+    color: #fff;
+}
+
+
+
+/* Contact Section */
+#about h2 {
+    font-size: 2rem;      
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;    
+    color: #ffffff;   /* new color (gold) */
+    margin-top: 0;     
+    margin-bottom: 20px;
+    text-align: center;    
+}
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 220px));
+    gap: 1.5rem;              /* Reduced spacing */
+    justify-content: center;  /* Centers the whole grid */
+}
+
+.contact-card {
+    background-image: url('concardgif.gif');
+    box-shadow: 0 5px 15px rgba(217, 22, 22, 0.786);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.contact-card img {
+    width: 50px;
+    margin-bottom: 0.5rem;
+}
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        right: -100%;
+        top: 0;
+        flex-direction: column;
+        width: 50%;
+        height: 100%;
+        background: rgba(255,192,203,0.95);
+        padding-top: 5rem;
+        gap: 2rem;
+        transition: right 0.3s;
+    }
+
+
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
+
