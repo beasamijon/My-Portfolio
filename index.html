@@ -59,17 +59,20 @@
                  <br><button class="view-btn">View</button>
             </div>
 
-<!-- Modal Overlay -->
-<!-- Unified Modal for Images & YouTube -->
-<div id="projectModal" class="modal" style="display:none;">
-    <span class="close">&times;</span>
-    <img id="modal-img" style="display:none; max-width:80%;">
-    <iframe id="modal-video" style="display:none; width:80%; height:400px;" 
-        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-    </iframe>
-    <div id="modal-caption"></div>
+<div class="project-card" data-video="https://www.youtube.com/embed/74FKA8uHZXk">
+    <h3>Entrep Video Pitch</h3>
+    <small>
+        Calaster.Ai is a revolutionary disaster detection platform that harnesses the power of artificial intelligence to predict and alert users of impending natural disasters, such as typhoons, earthquakes, and floods. With its cutting-edge technology and real-time monitoring, 
+        Calaster.Ai provides critical information to help individuals and communities prepare and stay safe in the face of disaster. By leveraging AI-driven insights, Calaster.Ai is changing the way we respond to natural phenomena, empowering users to take proactive measures and mitigate the impact of these events.
+    </small>
+    <br>
+    <button class="view-btn">View</button>
+    <!-- Add a hidden iframe -->
+    <div class="video-container" style="display:none; margin-top:10px;">
+        <iframe width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
 </div>
+
 
             <div class="project-card" data-images="itera.jpg">
                 <h3>IT Era</h3>
@@ -88,15 +91,19 @@
     </section>
 
     <!-- Unified Modal for Images & Videos -->
-    <div id="projectModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="modal-img" style="display:none;">
-        <video class="modal-content" id="modal-video" controls style="display:none;"></video>
-        <div id="modal-caption"></div>
-        <button class="prev-btn">&lt;</button>
-        <button class="next-btn">&gt;</button>
-    </div>
+<div id="projectModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modal-img" style="display:none;">
+    
+    <iframe class="modal-content" id="modal-video" 
+            style="display:none; width:70%; height:70vh;" 
+            frameborder="0" allowfullscreen 
+            allow="autoplay; encrypted-media"></iframe>
 
+    <div id="modal-caption"></div>
+    <button class="prev-btn">&lt;</button>
+    <button class="next-btn">&gt;</button>
+</div>
     <!-- About Section -->
     <section id="about" class="about-section">
         <h2>About Me</h2>
