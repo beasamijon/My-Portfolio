@@ -59,14 +59,16 @@
                  <br><button class="view-btn">View</button>
             </div>
 
-<div class="project-card" data-video="https://youtube.com/embed/74FKA8uHZXk">
-    <h3>Entrep Video Pitch</h3>
-    <small>
-        Calaster.Ai is a revolutionary disaster detection platform that harnesses the power of artificial intelligence to predict and alert users of impending natural disasters, such as typhoons, earthquakes, and floods. With its cutting-edge technology and real-time monitoring, 
-        Calaster.Ai provides critical information to help individuals and communities prepare and stay safe in the face of disaster. By leveraging AI-driven insights, Calaster.Ai is changing the way we respond to natural phenomena, empowering users to take proactive measures and mitigate the impact of these events.
-    </small>
-    <br>
-    <button class="view-btn">View</button>
+<!-- Modal Overlay -->
+<!-- Unified Modal for Images & YouTube -->
+<div id="projectModal" class="modal" style="display:none;">
+    <span class="close">&times;</span>
+    <img id="modal-img" style="display:none; max-width:80%;">
+    <iframe id="modal-video" style="display:none; width:80%; height:400px;" 
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
+    <div id="modal-caption"></div>
 </div>
 
             <div class="project-card" data-images="itera.jpg">
