@@ -2,76 +2,89 @@ const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 
 hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');  // show/hide menu
-    hamburger.classList.toggle('open');   // animate hamburger into X
+    navLinks.classList.toggle('active'); 
+    hamburger.classList.toggle('open');  
 });
 
-// Close menu when clicking a link (mobile-friendly)
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
         navLinks.classList.remove('active');
         hamburger.classList.remove('open');
     });
 });
-document.querySelectorAll('.view-btn').forEach(btn => {
+
+// Modal functionality
+const modal = document.getElementById('projectModal');
+const modalImg = document.getElementById('modal-img');
+const modalVideo = document.getElementById('modal-video');
+const closeBtn = modal.querySelector('.close');
+const nextBtn = modal.querySelector('.next-btn');
+const prevBtn = modal.querySelector('.prev-btn');
+const caption = document.getElementById('modal-caption');
+
+let currentMedia = []; // {type: 'img'|'video', src: '...'}
+let currentIndex = 0;
+
+// Add click listener to all project cards
+document.querySelectorAll('.project-card').forEach(card => {
+    const btn = card.querySelector('.view-btn');
     btn.addEventListener('click', () => {
-        const card = btn.closest('.project-card');
-        const videoSrc = card.dataset.video; // should be YouTube embed URL
+        // Gather media
+        const images = card.dataset.images ? card.dataset.images.split(',') : [];
+        const video = card.dataset.video ? [card.dataset.video] : [];
 
-        const modal = document.getElementById('projectModal');
-        const modalImg = document.getElementById('modal-img');
-        const modalVideo = document.getElementById('modal-video');
-        const caption = document.getElementById('modal-caption');
+        currentMedia = [];
+        images.forEach(src => currentMedia.push({type: 'img', src: src}));
+        video.forEach(src => currentMedia.push({type: 'video', src: src}));
 
-        caption.innerText = card.querySelector('h3').innerText;
-
-        modalImg.style.display = 'none';
-        modalVideo.style.display = 'block';
-
-        // Attempt to load YouTube link in <video> → triggers Error 153
-        modalVideo.src = videoSrc;
-        modalVideo.load();
-        modalVideo.play();
-
+        currentIndex = 0;
+        showMedia(currentIndex);
         modal.style.display = 'flex';
+        caption.innerText = card.querySelector('h3').innerText;
     });
 });
 
-// Close modal
-document.querySelectorAll('.view-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const card = btn.closest('.project-card');
-        const videoSrc = card.dataset.video; // YouTube embed link
-        const modal = document.getElementById('projectModal');
-        const modalImg = document.getElementById('modal-img');
-        const modalVideo = document.getElementById('modal-video');
-        const caption = document.getElementById('modal-caption');
+// Show media in modal
+function showMedia(index) {
+    const media = currentMedia[index];
+    if (!media) return;
 
-        caption.innerText = card.querySelector('h3').innerText;
-
-        // Hide image, show iframe
+    if (media.type === 'img') {
+        modalVideo.style.display = 'none';
+        modalVideo.src = ''; // stop YouTube
+        modalImg.style.display = 'block';
+        modalImg.src = media.src;
+    } else if (media.type === 'video') {
         modalImg.style.display = 'none';
+        modalImg.src = '';
         modalVideo.style.display = 'block';
-        modalVideo.src = videoSrc;
+        modalVideo.src = media.src + '?autoplay=1&rel=0';
+    }
+}
 
-        modal.style.display = 'flex';
-    });
+// Navigation buttons
+nextBtn.addEventListener('click', () => {
+    if (!currentMedia.length) return;
+    currentIndex = (currentIndex + 1) % currentMedia.length;
+    showMedia(currentIndex);
+});
+
+prevBtn.addEventListener('click', () => {
+    if (!currentMedia.length) return;
+    currentIndex = (currentIndex - 1 + currentMedia.length) % currentMedia.length;
+    showMedia(currentIndex);
 });
 
 // Close modal
-document.querySelector('#projectModal .close').addEventListener('click', () => {
-    const modal = document.getElementById('projectModal');
-    const modalVideo = document.getElementById('modal-video');
+closeBtn.addEventListener('click', () => {
     modal.style.display = 'none';
-    modalVideo.src = ''; // stop video playback
+    modalVideo.src = ''; // stop video
 });
 
-// Close on clicking outside
+// Close modal when clicking outside
 window.addEventListener('click', e => {
-    const modal = document.getElementById('projectModal');
-    const modalVideo = document.getElementById('modal-video');
     if (e.target === modal) {
         modal.style.display = 'none';
-        modalVideo.src = '';
+        modalVideo.src = ''; // stop video
     }
 });
